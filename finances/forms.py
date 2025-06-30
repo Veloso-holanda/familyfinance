@@ -22,7 +22,9 @@ class CashOutFlowForm(forms.ModelForm):
                 pass
             else:
                 raise forms.ValidationError("Para pagamentos à vista o número de parcelas tem que ser igual a 1.")
+            
 
+        return cleaned_data
 
 class RevenueForm(forms.ModelForm):
     class Meta:
@@ -33,3 +35,7 @@ class RevenueForm(forms.ModelForm):
         cleaned_data = super().clean()
         source = cleaned_data.get("source")
         value = cleaned_data.get("value")
+
+
+
+        return cleaned_data

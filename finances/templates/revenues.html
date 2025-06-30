@@ -27,7 +27,7 @@
                 {% for revenue in revenues %}
                     <tr>
                         <td>{{ revenue.source }}</td>
-                        <td>{{ revenue.value }}</td>
+                        <td>R$ {{ revenue.value }}</td>
                         <td>{{ revenue.date|date:"d/m/Y" }}</td>
                     </tr>
                 {% empty %}
