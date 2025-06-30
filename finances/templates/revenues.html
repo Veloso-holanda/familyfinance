@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .buttons-container {
+      display: flex;
+      justify-content: right;
+      margin-top: 20px;
+      margin-right: 40px;
+      margin-bottom: 20px;
+    }
+</style>
+<div class="container mt-5">
+    <h2 class="text-light mb-4">Despesas</h2>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-bordered table-hover rounded shadow">
+            <thead class="thead-light text-center">
+                <tr>
+                    <th>Fonte da Receita</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for revenue in revenues %}
+                    <tr>
+                        <td>{{ revenue.source }}</td>
+                        <td>{{ revenue.value }}</td>
+                        <td>{{ revenue.date|date:"d/m/Y" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">Nenhuma receita registrada ainda.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="buttons-container">
+    <a href="{% url 'createrevenue' %}" class="btn btn-primary">Nova Receita</a>
+</div>
+{% endblock %}
